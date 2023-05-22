@@ -1,22 +1,23 @@
 const path = require("path");
 const express = require("express");
-const router = require("./routes/routes")
+const router = require("./routes/router");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-let corsOptions = {
-    origin: "http://localhost:8080",
-};
-app.use(cors(corsOptions));
+const app = express();
 
 // set router nya
-app.use("/api", router);
+app.use(router)
 
-app.use((err, req, res, next) => {
-    err.statusCode = err.statusCode || 500;
-    err.message = err.message || "Internal server error";
-    res.status(err.statusCode).json({
-        message: err.message,
-    });
-});
+app.get("/", (req, res) => {
+    console.log("Response success")
+    res.send("Response Success!")
+})
+
+// app.get("/coba", (req, res) => {
+//     console.log("Response success")
+//     res.send("berhasil bro")
+// })
+
+
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`Server sedang berjalan di port: ${PORT}`));
