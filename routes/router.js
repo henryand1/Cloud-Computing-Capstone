@@ -4,10 +4,10 @@ const mysql = require('mysql')
 
 // koneksi mysql
 const connection = mysql.createConnection({
-    host: '34.101.138.153',
+    host: '34.128.84.0',
     user: 'root',
-    database: 'capstone',
-    password: 'asikjos123'
+    database: 'myplant',
+    password: 'plant-my123'
 })
 
 router.get("/penyakit", (req, res) => {
